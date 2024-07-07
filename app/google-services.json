@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "128314308664",
+    "project_id": "firestar-3c57c",
+    "storage_bucket": "firestar-3c57c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128314308664:android:9957c448ad843ceb2a0ecd",
+        "android_client_info": {
+          "package_name": "com.example.firestar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtqDF5dlDnnOfLIwei14SR0ku8BhXJEUc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
