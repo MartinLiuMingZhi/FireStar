@@ -73,12 +73,19 @@
                 android:text="Email Address"
                 android:alpha="0.7"
                 android:textStyle="bold"/>
-            <EditText
-                android:id="@+id/email"
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:drawableEnd="@drawable/done_icon"/>
+                style="@style/Widget.MyApp.TextInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    style="@style/Widget.MyApp.TextInputEditText"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <View
                 android:layout_width="wrap_content"
@@ -90,12 +97,21 @@
                 android:text="Password"
                 android:alpha="0.7"
                 android:textStyle="bold"/>
-            <EditText
-                android:id="@+id/password"
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:drawableEnd="@drawable/password_icon"/>
+                style="@style/Widget.MyApp.TextInputLayout"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleDrawable="@drawable/password_visible_invisible">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    style="@style/Widget.MyApp.TextInputEditText"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -148,6 +164,10 @@
                 android:text="FireStar was made by MartinLeo"
                 android:layout_gravity="center"
                 android:alpha="0.7"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
 
 <!--            <LinearLayout-->
 <!--                android:layout_width="match_parent"-->

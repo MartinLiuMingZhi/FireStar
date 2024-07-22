@@ -27,4 +27,15 @@
     <style name="Theme.FireStar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.FireStar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Custom style for TextInputLayout -->
+    <style name="Widget.MyApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+
+    </style>
+
+    <!-- Custom style for TextInputEditText -->
+    <style name="Widget.MyApp.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+
+    </style>
 </resources>

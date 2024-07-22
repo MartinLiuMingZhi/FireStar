@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firestar.databinding.ActivityLoginBinding
 import kotlinx.coroutines.CoroutineScope
@@ -17,6 +18,7 @@ class LoginActivity:AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
