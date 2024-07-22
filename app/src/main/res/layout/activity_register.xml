@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bg"
-    tools:context=".LoginActivity"
-    android:id="@+id/loginActivity">
+    tools:context=".RegisterActivity"
+    android:id="@+id/registerActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -60,7 +60,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please login with your information"
+                android:text="Please register your account"
                 android:alpha="0.7"/>
 
             <View
@@ -97,47 +97,36 @@
                 android:inputType="textPassword"
                 android:drawableEnd="@drawable/password_icon"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:id="@+id/remember"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Remember me"
-                    android:layout_centerVertical="true"
-                    android:alpha="0.7"/>
-                <TextView
-                    android:id="@+id/forgetPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="I forgot my password"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
-            </RelativeLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/login"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="Login"
-                app:cornerRadius="32dp"/>
-
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"/>
 
             <TextView
-                android:id="@+id/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="if don't have account,please register one"
-                android:layout_gravity="center"
-                android:alpha="0.7"/>
+                android:text="CheckPassword"
+                android:alpha="0.7"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/checkPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:drawableEnd="@drawable/password_icon"/>
+
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/register"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Register"
+                app:cornerRadius="32dp"/>
+
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"/>
@@ -149,18 +138,18 @@
                 android:layout_gravity="center"
                 android:alpha="0.7"/>
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:layout_gravity="center">-->
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                android:layout_gravity="center">-->
 
-<!--                <ImageView-->
-<!--                    android:layout_width="40dp"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    android:layout_margin="12dp"-->
-<!--                    android:background="@drawable/password_icon"/>-->
-<!--            </LinearLayout>-->
+            <!--                <ImageView-->
+            <!--                    android:layout_width="40dp"-->
+            <!--                    android:layout_height="40dp"-->
+            <!--                    android:layout_margin="12dp"-->
+            <!--                    android:background="@drawable/password_icon"/>-->
+            <!--            </LinearLayout>-->
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -31,6 +31,7 @@ class LoginActivity:AppCompatActivity() {
             binding.password.setText(password)
             binding.remember.isChecked = true
         }
+
         binding.login.setOnClickListener {
             val email = binding.email.text.toString()
             val password = binding.password.text.toString()
@@ -48,7 +49,16 @@ class LoginActivity:AppCompatActivity() {
                 login()
             }
         }
+
+        binding.register.setOnClickListener {
+            val intent = Intent(this@LoginActivity,RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
     }
+
+
+
     private suspend fun login(){
         try {
             val email = binding.email.text.toString()
