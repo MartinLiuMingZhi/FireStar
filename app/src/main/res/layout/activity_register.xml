@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bg"
-    tools:context=".RegisterActivity"
+    tools:context=".activity.RegisterActivity"
     android:id="@+id/registerActivity">
 
     <RelativeLayout
@@ -89,8 +89,42 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
+                android:layout_height="10dp"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColorHint="#96392C2C"
+                    android:paddingEnd="0dp"
+                    style="@style/Widget.MyApp.TextInputLayout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="请输入邮箱验证码"
+                        android:maxLines="1"
+                        android:maxLength="6"
+                        style="@style/Widget.MyApp.TextInputEditText"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:text="获取验证码"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -115,7 +149,7 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
+                android:layout_height="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -142,7 +176,7 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"/>
+                android:layout_height="10dp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/register"
@@ -153,7 +187,7 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
+                android:layout_height="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -164,7 +198,7 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
+                android:layout_height="10dp"/>
 
             <!--            <LinearLayout-->
             <!--                android:layout_width="match_parent"-->

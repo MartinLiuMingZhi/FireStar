@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 默认状态 -->
+    <item android:state_pressed="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="32dp"/>
+            <solid android:color="@color/button_default_color"/>
+        </shape>
+    </item>
+    <!-- 按下状态 -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="32dp"/>
+            <solid android:color="@color/button_pressed_color"/>
+        </shape>
+    </item>
+</selector>

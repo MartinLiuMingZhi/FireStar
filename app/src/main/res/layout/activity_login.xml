@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bg"
-    tools:context=".LoginActivity"
+    tools:context=".activity.LoginActivity"
     android:id="@+id/loginActivity">
 
     <RelativeLayout

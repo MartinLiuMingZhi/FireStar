@@ -4,6 +4,9 @@ plugins {
 
     // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
+
+    alias(libs.plugins.jetbrains.kotlin.kapt)
+
 }
 
 android {
@@ -56,7 +59,22 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.okhttp)
+    implementation (libs.logging.interceptor)
+
+
+    implementation(platform(libs.firebase.bom))
     implementation("com.google.firebase:firebase-analytics")
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+
+    //Glide
+    implementation(libs.glide)
+//    annotationProcessor(libs.compiler)
 
 }
