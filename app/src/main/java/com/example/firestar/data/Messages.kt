@@ -21,4 +21,6 @@ class Messages(
 
 //    @ColumnInfo(name = "timestamp")
 //    val timestamp:
+
+    val type: Int
 )

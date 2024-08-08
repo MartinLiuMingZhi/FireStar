@@ -1,9 +1,12 @@
 package com.example.firestar.activity
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
+import android.view.RoundedCorner
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -18,8 +21,12 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.firestar.R
 import com.example.firestar.databinding.ActivityMainBinding
+import com.google.android.material.button.MaterialButton
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -68,8 +75,30 @@ class MainActivity : AppCompatActivity() {
 
         email.text = emailSP
         username.text = usernameSP
-        Glide.with(this@MainActivity).load(avatarSP).into(avatar)
+        if (!avatarSP.isNullOrEmpty()) {
+            Glide.with(this)
+                .load(avatarSP)
+                .apply(RequestOptions().transform(RoundedCorners(48)))
+                .into(avatar)
+        } else {
+            // 设置默认图片
+            avatar.setImageResource(R.drawable.ic_launcher_round)
+        }
 
+        val settingBtn = binding.btnSettings
+        settingBtn.setOnClickListener {
+            val edit = sharedPreferences.edit()
+            edit.putBoolean("is_login",false)
+            edit.remove("token")
+            edit.remove("username")
+            edit.remove("email")
+            edit.remove("avatar")
+            edit.apply()
+            finishAffinity()
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
 
 
     }
