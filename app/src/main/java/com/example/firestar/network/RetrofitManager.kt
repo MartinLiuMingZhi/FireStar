@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitManager {
-    private const val BASE_URL = "http://8.134.79.156:7688"
+    private const val BASE_URL = "http://xxxx"
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)

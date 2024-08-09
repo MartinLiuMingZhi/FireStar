@@ -2,7 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<!--    网络请求权限-->
     <uses-permission android:name="android.permission.INTERNET"/>
+<!--    定位权限-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 如果需要精确定位的话请加上此权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 如果需要粗略定位的话请加上此权限 -->
+
+
+    <!--usesCleartextTraffic避免明文请求报错,无法请求-->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -30,7 +37,8 @@
             android:name=".activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.FireStar.NoActionBar"></activity>
+            android:theme="@style/Theme.FireStar.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
