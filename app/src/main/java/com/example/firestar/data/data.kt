@@ -1,5 +1,7 @@
 package com.example.firestar.data
 
+import java.sql.Timestamp
+
 data class BaseResponse<T>(
     val code: String,
     val msg:String,
@@ -38,4 +40,18 @@ data class RegisterResponse(
 data class VerifyCodeRequest(
     val email: String,
     val code: String
+)
+
+data class SendMessageRequest(
+    val senderId: Long,
+    val receiverId: Long,
+    val content: String
+)
+
+data class GetMessageResponse(
+    val id:Long,
+    val senderId: Long,
+    val receiverId: Long,
+    val content: String,
+    val timestamp: Timestamp
 )
