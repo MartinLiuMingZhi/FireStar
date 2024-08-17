@@ -2,12 +2,17 @@ package com.example.firestar.activity
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import com.amap.api.location.AMapLocationClient
 import com.example.firestar.data.LoginRequest
 import com.example.firestar.databinding.ActivityLoginBinding
 import com.example.firestar.network.NetWork

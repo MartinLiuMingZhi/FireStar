@@ -9,7 +9,7 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class MapNetWork {
+object MapNetWork {
     private val service = MapRetrofitManager.create<MapService>()
 
     suspend fun getLocation(key:String) = service.getLocation(key).await()
