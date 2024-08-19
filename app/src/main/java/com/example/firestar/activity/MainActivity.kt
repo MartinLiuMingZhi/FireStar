@@ -260,8 +260,8 @@ class MainActivity : AppCompatActivity(), AMapLocationListener {
         val weatherResponse = WeatherNetWork.getRealtimeWeather(KeyManager.WEATHERKEY, location)
         if (weatherResponse.code == "200") {
             withContext(Dispatchers.Main) {
-                binding.icWeather.setImageResource(getSky(weatherResponse.now.text).icon)
-                binding.temperature.text = weatherResponse.now.temp
+                binding.icWeather.setImageResource(getSky(weatherResponse.now.icon).icon)
+                binding.temperature.text = "${weatherResponse.now.temp}℃"
                 binding.weatherText.text = weatherResponse.now.text
             }
         } else {

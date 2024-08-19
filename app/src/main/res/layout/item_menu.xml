@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:padding="10.0dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dp"
+                app:cardBackgroundColor="#ff34495e"
+                app:cardElevation="0.0dp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/chat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10.0dp"
+                        app:cardBackgroundColor="#ff34495e"
+                        app:cardElevation="0.0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/music_back"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#FF736A">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/music_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12.0dp"
+                                android:layout_marginTop="12.0dp"
+                                android:layout_marginEnd="12.0dp"
+                                android:text="知音密聊"
+                                android:textColor="@color/white"
+                                android:textSize="16.0sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/music_subtitle"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/music_subtitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12.0dp"
+                                android:layout_marginTop="4.0dp"
+                                android:layout_marginEnd="12.0dp"
+                                android:layout_marginBottom="24.0dp"
+                                android:alpha="0.6"
+                                android:text="畅想自由\n随时聊聊"
+                                android:textColor="@color/white"
+                                android:textSize="10.0sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/music_title" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="0.0dp"
+                                android:layout_height="56.0dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:translationY="4.0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:srcCompat="@drawable/ic_chat" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/guide"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10.0dp"
+                        app:cardBackgroundColor="#ff34495e"
+                        app:cardElevation="0.0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/head_back"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#01A79B">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/head_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12.0dp"
+                                android:layout_marginTop="12.0dp"
+                                android:layout_marginEnd="12.0dp"
+                                android:text="高德地图"
+                                android:textColor="@color/white"
+                                android:textSize="16.0sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/head_subtitle"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/head_subtitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12.0dp"
+                                android:layout_marginTop="4.0dp"
+                                android:layout_marginEnd="12.0dp"
+                                android:layout_marginBottom="24.0dp"
+                                android:alpha="0.6"
+                                android:text="世界之大\n导航出行"
+                                android:textColor="@color/white"
+                                android:textSize="10.0sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/head_title" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="0.0dp"
+                                android:layout_height="56.0dp"
+                                android:layout_marginEnd="10.0dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:translationY="-2.0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:srcCompat="@drawable/ic_map" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mega"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10.0dp"
+                        app:cardBackgroundColor="#ff34495e"
+                        app:cardElevation="0.0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/mega_back"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#808080">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/mega_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12.0dp"
+                                android:layout_marginTop="12.0dp"
+                                android:layout_marginEnd="12.0dp"
+                                android:text="喊话"
+                                android:textColor="@color/white"
+                                android:textSize="16.0sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/mega_subtitle"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/mega_subtitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12.0dp"
+                                android:layout_marginTop="4.0dp"
+                                android:layout_marginEnd="12.0dp"
+                                android:layout_marginBottom="24.0dp"
+                                android:alpha="0.6"
+                                android:text="一键喊话\n联系亲友"
+                                android:textColor="@color/white"
+                                android:textSize="10.0sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/mega_title" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="0.0dp"
+                                android:layout_height="56.0dp"
+                                android:layout_marginEnd="10.0dp"
+                                android:layout_marginBottom="2dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:translationY="4.0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:srcCompat="@drawable/ic_map" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/weather"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10.0dp"
+                        app:cardBackgroundColor="#ff34495e"
+                        app:cardElevation="0.0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/wall_back"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/blue">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/wall_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12.0dp"
+                                android:layout_marginTop="12.0dp"
+                                android:layout_marginEnd="12.0dp"
+                                android:text="天气预报"
+                                android:textColor="@color/white"
+                                android:textSize="16.0sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/wall_subtitle"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/wall_subtitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12.0dp"
+                                android:layout_marginTop="4.0dp"
+                                android:layout_marginEnd="12.0dp"
+                                android:layout_marginBottom="24.0dp"
+                                android:alpha="0.6"
+                                android:text="播报天气\n有备无患"
+                                android:textColor="@color/white"
+                                android:textSize="10.0sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/wall_title" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="0.0dp"
+                                android:layout_height="56.0dp"
+                                android:layout_marginEnd="10.0dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:translationY="4.0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:srcCompat="@drawable/ic_map" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/findStick"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10.0dp"
+                        app:cardBackgroundColor="#ff34495e"
+                        app:cardElevation="0.0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/findStick_back"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#8d4bbb">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/findStick_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12.0dp"
+                                android:layout_marginTop="12.0dp"
+                                android:layout_marginEnd="12.0dp"
+                                android:text="一键寻杖"
+                                android:textColor="@color/white"
+                                android:textSize="16.0sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/findStick_subtitle"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/findStick_subtitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12.0dp"
+                                android:layout_marginTop="4.0dp"
+                                android:layout_marginEnd="12.0dp"
+                                android:layout_marginBottom="24.0dp"
+                                android:alpha="0.6"
+                                android:text="便捷寻杖\n播报位置"
+                                android:textColor="@color/white"
+                                android:textSize="10.0sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/findStick_title" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="0.0dp"
+                                android:layout_height="56.0dp"
+                                android:layout_marginEnd="10.0dp"
+                                android:layout_marginBottom="4dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:translationY="4.0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:srcCompat="@drawable/ic_map" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/userinfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10.0dp"
+                        app:cardBackgroundColor="#ff34495e"
+                        app:cardElevation="0.0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/video_back"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#82BD63">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/video_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12.0dp"
+                                android:layout_marginTop="12.0dp"
+                                android:layout_marginEnd="12.0dp"
+                                android:text="个人中心"
+                                android:textColor="@color/white"
+                                android:textSize="16.0sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/video_subtitle"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/video_subtitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12.0dp"
+                                android:layout_marginTop="4.0dp"
+                                android:layout_marginEnd="12.0dp"
+                                android:layout_marginBottom="24.0dp"
+                                android:alpha="0.6"
+                                android:text="信息修改\n绑定亲友"
+                                android:textColor="@color/white"
+                                android:textSize="10.0sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/video_title" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="0.0dp"
+                                android:layout_height="56.0dp"
+                                android:layout_marginEnd="10.0dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:translationY="4.0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:srcCompat="@drawable/ic_map" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

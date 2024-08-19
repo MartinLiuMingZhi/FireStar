@@ -69,7 +69,7 @@
                 android:orientation="vertical"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_margin="10dp">
+                android:layout_marginStart="8dp">
 
                 <TextView
                     android:id="@+id/weatherText"
@@ -77,15 +77,16 @@
                     android:layout_height="wrap_content"
                     android:text="晴"
                     android:textSize="14sp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:layout_marginTop="3dp"/>
 
                 <TextView
                     android:id="@+id/temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="33℃"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"/>
+                    android:textSize="13sp"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
         </LinearLayout>

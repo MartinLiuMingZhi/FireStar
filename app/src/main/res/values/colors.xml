@@ -15,5 +15,6 @@
     <color name="button_default_color">#FF6200EE</color> <!-- 默认按钮颜色 -->
     <color name="button_pressed_color">#FF3700B3</color> <!-- 按下时按钮颜色 -->
 
+    <color name="blue">#ff5187f4</color>
 
 </resources>
