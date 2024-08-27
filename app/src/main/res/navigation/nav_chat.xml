@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_chat"
+    app:startDestination="@id/navigation_message">
+
+    <fragment
+        android:id="@+id/navigation_message"
+        android:name="com.example.firestar.ui.chat.message.MessageFragment"
+        android:label="Message"
+        tools:layout="@layout/fragment_message"/>
+
+
+    <fragment
+        android:id="@+id/navigation_contact"
+        android:name="com.example.firestar.ui.chat.contact.ContactFragment"
+        android:label="Contact"
+        tools:layout="@layout/fragment_contact"/>
+
+    <fragment
+        android:id="@+id/navigation_dynamic"
+        android:name="com.example.firestar.ui.chat.dynamic.DynamicFragment"
+        android:label="Dynamic"
+        tools:layout="@layout/fragment_dynamic" />
+
+
+
+</navigation>

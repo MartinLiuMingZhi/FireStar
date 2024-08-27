@@ -1,5 +1,7 @@
 package com.example.firestar.data
 
+import androidx.annotation.Size
+import com.example.firestar.model.ContactItem
 import java.sql.Timestamp
 
 data class BaseResponse<T>(
@@ -54,4 +56,25 @@ data class GetMessageResponse(
     val receiverId: Long,
     val content: String,
     val timestamp: Timestamp
+)
+
+data class UserDTO(
+    val userid: Long,
+    val username: String,
+    val avatar: String,
+    val sex: String,
+    val email: String
+)
+
+data class Page(
+    val page: Long,
+    val pageSize: Long
+)
+
+data class UserPageResponse(
+    val records: List<ContactItem>,
+    val total: String,
+    val size: String,
+    val current: String,
+    val pages: String
 )

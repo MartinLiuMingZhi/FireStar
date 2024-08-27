@@ -1,0 +1,31 @@
+package com.example.firestar.adapter
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.firestar.databinding.ItemPersonBinding
+import com.example.firestar.model.ContactItem
+
+class ContactAdapter(private val items: List<ContactItem>):RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
+
+    inner class ViewHolder(val binding: ItemPersonBinding):RecyclerView.ViewHolder(binding.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemPersonBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return ViewHolder(binding)
+    }
+
+    override fun getItemCount(): Int {
+        return items.size
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+       val user = items[position]
+        Glide.with(holder.itemView.context).load(user.avatar).into(holder.binding.roundAvatar)
+        holder.binding.email.text = user.email
+        holder.binding.username.text = user.username
+    }
+
+
+}

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.firestar.R
 import com.example.firestar.data.Messages
 
-class MessageListAdapter(val messageList: List<Messages>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MessageListAdapter(private val messageList: List<Messages>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val VIEW_TYPE_MESSAGE_SENT = 1
     private val VIEW_TYPE_MESSAGE_RECEIVED = 2
