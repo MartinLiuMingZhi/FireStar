@@ -35,6 +35,10 @@ class ContactFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView_contact)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
+        // 初始化适配器并设置到 RecyclerView
+        val adapter = ContactAdapter(emptyList())  // 初始数据为空
+        recyclerView.adapter = adapter
+
         // 观察 ViewModel 中的数据变化
         viewModel.items.observe(viewLifecycleOwner) { items ->
             // 当数据变化时，更新 RecyclerView 的适配器

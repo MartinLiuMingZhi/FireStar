@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.firestar.databinding.ItemPersonBinding
 import com.example.firestar.model.ContactItem
 
@@ -22,7 +24,10 @@ class ContactAdapter(private val items: List<ContactItem>):RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
        val user = items[position]
-        Glide.with(holder.itemView.context).load(user.avatar).into(holder.binding.roundAvatar)
+        Glide.with(holder.itemView.context).load(user.avatar).apply(
+            RequestOptions().transform(
+                RoundedCorners(64)
+            )).into(holder.binding.roundAvatar)
         holder.binding.email.text = user.email
         holder.binding.username.text = user.username
     }

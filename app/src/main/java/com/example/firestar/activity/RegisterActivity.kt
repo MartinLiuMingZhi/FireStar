@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Looper
+import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,8 +18,12 @@ import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.regex.Pattern
 
 class RegisterActivity : AppCompatActivity() {
+
+    private val TAG = "RegisterActivity"
 
     private lateinit var binding: ActivityRegisterBinding
     private var countDownTimer: CountDownTimer? = null
@@ -32,7 +38,9 @@ class RegisterActivity : AppCompatActivity() {
         timerButton = binding.codeBtn
 
         timerButton.setOnClickListener {
-            startCountDown()
+           CoroutineScope(Dispatchers.IO).launch {
+               getCode()
+           }
         }
 
         binding.register.setOnClickListener {
@@ -41,6 +49,43 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private suspend fun getCode(){
+
+        try {
+            val email = binding.email.text.toString().trim()
+            if (!TextUtils.isEmpty(email)){
+                if (checkEmail(email)){
+                    // 切换到主线程来启动倒计时
+                    withContext(Dispatchers.Main) {
+                        startCountDown()
+                    }
+                    val response = NetWork.sendCode(email)
+                    Log.d(TAG,response.toString())
+                    // 切换到主线程显示 Toast
+                    withContext(Dispatchers.Main) {
+                        if (response.code == "200") {
+                            Toast.makeText(this@RegisterActivity, "获取邮箱验证码成功", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this@RegisterActivity, "获取邮箱验证码失败", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }else{
+                    withContext(Dispatchers.Main){
+                        Toast.makeText(this@RegisterActivity,"邮箱格式不正确",Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            }else{
+                withContext(Dispatchers.Main){
+                    Toast.makeText(this@RegisterActivity,"请输入邮箱",Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        }catch (e:Exception){
+            Log.e(TAG,"getCode",e)
+        }
     }
 
     private fun startCountDown() {
@@ -71,7 +116,7 @@ class RegisterActivity : AppCompatActivity() {
             val token = response.data.token
             TokenManager.setCurrentToken(token)
 
-            val sharedPreferences = getSharedPreferences("account_data", Context.MODE_PRIVATE)
+            val sharedPreferences = getSharedPreferences("account", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putString("token",token)
             editor.putString("username",response.data.username)
@@ -91,6 +136,13 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this,"注册失败",Toast.LENGTH_SHORT).show()
             Looper.loop()
         }
+    }
+
+    private fun checkEmail(email:String):Boolean{
+        val regex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+\$"
+        val p = Pattern.compile(regex)
+        val m = p.matcher(email)
+        return m.matches()
     }
 }
 

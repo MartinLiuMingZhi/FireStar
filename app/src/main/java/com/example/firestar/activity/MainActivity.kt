@@ -107,9 +107,11 @@ class MainActivity : AppCompatActivity(), AMapLocationListener {
 
 
         val sharedPreferences = getSharedPreferences("account_data", Context.MODE_PRIVATE)
-        val avatarSP = sharedPreferences.getString("avatar","")
-        val emailSP = sharedPreferences.getString("email","")
-        val usernameSP = sharedPreferences.getString("username","")
+        val sharedPreferencesAccount = getSharedPreferences("account",Context.MODE_PRIVATE)
+
+        val avatarSP = sharedPreferencesAccount.getString("avatar","")
+        val emailSP = sharedPreferencesAccount.getString("email","")
+        val usernameSP = sharedPreferencesAccount.getString("username","")
 
         val headerView = navView.getHeaderView(0)
         // 获取 header 中的控件
@@ -131,12 +133,8 @@ class MainActivity : AppCompatActivity(), AMapLocationListener {
 
         val settingBtn = binding.btnSettings
         settingBtn.setOnClickListener {
-            val edit = sharedPreferences.edit()
-            edit.putBoolean("is_login",false)
-            edit.remove("token")
-            edit.remove("username")
-            edit.remove("email")
-            edit.remove("avatar")
+            val edit = sharedPreferencesAccount.edit()
+            edit.clear()
             edit.apply()
             finishAffinity()
             val intent = Intent(this, LoginActivity::class.java)

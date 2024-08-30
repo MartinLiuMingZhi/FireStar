@@ -33,11 +33,13 @@ class LoginActivity:AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("account_data", Context.MODE_PRIVATE)
         val isRemember = sharedPreferences.getBoolean("remember_password",false)
-        val isLogin = sharedPreferences.getBoolean("is_login",false)
+
+        val sharedPreferencesAccount = getSharedPreferences("account",Context.MODE_PRIVATE)
+        val isLogin = sharedPreferencesAccount.getBoolean("is_login",false)
 
         if (isLogin){
             //已经登录过，直接跳转到主界面
-            val token = sharedPreferences.getString("token","")
+            val token = sharedPreferencesAccount.getString("token","")
             TokenManager.setCurrentToken(token.toString())
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
@@ -90,8 +92,8 @@ class LoginActivity:AppCompatActivity() {
                 val token = loginResponse.data.token
                 TokenManager.setCurrentToken(token)
 
-                val sharedPreferences = getSharedPreferences("account_data", Context.MODE_PRIVATE)
-                val editor = sharedPreferences.edit()
+                val sharedPreferencesAccount = getSharedPreferences("account", Context.MODE_PRIVATE)
+                val editor = sharedPreferencesAccount.edit()
                 editor.putString("token",token)
                 editor.putString("username",loginResponse.data.username)
                 editor.putString("email",loginResponse.data.email)
