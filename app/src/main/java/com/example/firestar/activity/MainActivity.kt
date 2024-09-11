@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Looper
 import android.util.Log
 import android.view.Menu
 import android.widget.ImageView
@@ -12,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -29,11 +29,10 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.firestar.R
 import com.example.firestar.databinding.ActivityMainBinding
-import com.example.firestar.model.Sky
 import com.example.firestar.model.getSky
 import com.example.firestar.network.KeyManager
-import com.example.firestar.network.MapNetWork
 import com.example.firestar.network.WeatherNetWork
+import com.example.firestar.viewmodel.LocationViewModel
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
@@ -48,6 +47,8 @@ class MainActivity : AppCompatActivity(), AMapLocationListener {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var location: String
+
+    private val locationViewModel: LocationViewModel by viewModels()
 
     private val TAG = "MainActivity"
 
@@ -87,11 +88,11 @@ class MainActivity : AppCompatActivity(), AMapLocationListener {
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
-        binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
-        }
+//        binding.appBarMain.fab.setOnClickListener { view ->
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null)
+//                .setAnchorView(R.id.fab).show()
+//        }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
@@ -99,7 +100,7 @@ class MainActivity : AppCompatActivity(), AMapLocationListener {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_chat
+                R.id.nav_home, R.id.nav_map, R.id.nav_slideshow,R.id.nav_chat
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -225,6 +226,10 @@ class MainActivity : AppCompatActivity(), AMapLocationListener {
     override fun onLocationChanged(aMapLocation: AMapLocation?) {
         if (aMapLocation != null) {
             if (aMapLocation.errorCode == 0) {
+
+                // 更新 ViewModel 中的位置信息
+                locationViewModel.setLocation(aMapLocation)
+
                 // 定位成功，更新UI
                 val locationStr = "${aMapLocation.city}, ${aMapLocation.district}"
                 binding.location.text = aMapLocation.district
