@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.cli.jvm.main
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -88,7 +86,7 @@ dependencies {
 
 
     implementation(platform(libs.firebase.bom))
-    implementation("com.google.firebase:firebase-analytics")
+    implementation(libs.firebase.analytics)
 
     // Room
     implementation(libs.androidx.room.runtime)
@@ -99,4 +97,10 @@ dependencies {
     implementation(libs.glide)
 //    annotationProcessor(libs.compiler)
 
+    //WebRTC
+    implementation(libs.google.webrtc)
+
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.androidx.media3.common)
 }

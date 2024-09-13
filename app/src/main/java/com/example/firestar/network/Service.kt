@@ -9,11 +9,9 @@ import com.example.firestar.data.Page
 import com.example.firestar.data.RegisterRequest
 import com.example.firestar.data.RegisterResponse
 import com.example.firestar.data.SendMessageRequest
-import com.example.firestar.data.UserDTO
 import com.example.firestar.data.UserPageResponse
 import com.example.firestar.data.VerifyCodeRequest
 import com.example.firestar.model.ContactItem
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

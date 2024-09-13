@@ -11,6 +11,7 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_map">Map</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_video">Video</string>
     <string name="setting">设置</string>
+    <string name="menu_chat">Chat</string>
 </resources>
