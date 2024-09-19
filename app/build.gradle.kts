@@ -98,9 +98,13 @@ dependencies {
 //    annotationProcessor(libs.compiler)
 
     //WebRTC
-    implementation(libs.google.webrtc)
+//    implementation(libs.google.webrtc)
 
+    //Media3
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.ui)
     implementation(libs.androidx.media3.common)
+    implementation(libs.androidx.media3.exoplayer.dash)
+    implementation( libs.androidx.media3.exoplayer.hls)
+    implementation (libs.androidx.media3.exoplayer.smoothstreaming)
 }
