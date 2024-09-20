@@ -20,5 +20,9 @@
             android:id="@+id/nav_chat"
             android:icon="@drawable/ic_chat"
             android:title="@string/menu_chat"/>
+        <item
+            android:id="@+id/nav_bilibili"
+            android:icon="@drawable/ic_bilibili"
+            android:title="@string/menu_bilibili"/>
     </group>
 </menu>

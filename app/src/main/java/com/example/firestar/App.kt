@@ -8,8 +8,20 @@ import com.amap.api.services.core.ServiceSettings
 
 
 class App : Application() {
+
+    companion object {
+        private lateinit var instance: App
+
+        fun getInstance(): App {
+            return instance
+        }
+    }
+
     override fun onCreate() {
         super.onCreate()
+
+        instance = this
+
         val mContext: Context = this
         // 定位隐私政策同意
         AMapLocationClient.updatePrivacyShow(mContext, true, true)

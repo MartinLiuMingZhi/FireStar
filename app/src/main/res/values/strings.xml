@@ -14,6 +14,7 @@
     <string name="menu_video">Video</string>
     <string name="setting">设置</string>
     <string name="menu_chat">Chat</string>
+    <string name="menu_bilibili">Bilibili</string>
 
 
     <string name="media_url_mp3">https://storage.googleapis.com/exoplayer-test-media-0/Jazz_In_Paris.mp3</string>
@@ -26,5 +27,6 @@
     <string name="video_url_1"><![CDATA[https://upos-hz-mirrorakam.akamaized.net/upgcxcode/89/22/25805262289/25805262289-1-100026.m4s?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&uipk=5&nbs=1&deadline=1726223338&gen=playurlv2&os=akam&oi=1022961578&trid=efc2f37fc2d34b37b725a7603034e1d0u&mid=1410474192&platform=pc&og=cos&upsig=9edbc3ea11efa863484061db15a60e52&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform,og&hdnts=exp=1726223338~hmac=be0eca418dc21171bfa57649443a8334f536d5ee502acac6350bb274daeedc58&bvc=vod&nettype=0&orderid=0,1&buvid=25AE2F82-BE2A-AC3F-5A46-1A9DCAB9497781400infoc&build=0&f=u_0_0&agrr=1&bw=230351&logo=80000000]]></string>
 
     <string name="audio_url_1"><![CDATA[https://upos-hz-mirrorakam.akamaized.net/upgcxcode/89/22/25805262289/25805262289-1-30280.m4s?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&uipk=5&nbs=1&deadline=1726223338&gen=playurlv2&os=akam&oi=1022961578&trid=efc2f37fc2d34b37b725a7603034e1d0u&mid=1410474192&platform=pc&og=hw&upsig=5fb5cdfabfc903671d853ecc34bd551e&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform,og&hdnts=exp=1726223338~hmac=46baaa927b9e027023c05ffc98ba6a8123f522cc3c563f80bb224d724b9230ff&bvc=vod&nettype=0&orderid=0,1&buvid=25AE2F82-BE2A-AC3F-5A46-1A9DCAB9497781400infoc&build=0&f=u_0_0&agrr=1&bw=14165&logo=80000000]]></string>
+
 
 </resources>

@@ -18,7 +18,7 @@
         tools:layout="@layout/fragment_map" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_video"
         android:name="com.example.firestar.ui.video.VideoFragment"
         android:label="@string/menu_video"
         tools:layout="@layout/fragment_video" />
@@ -28,5 +28,11 @@
         android:name="com.example.firestar.ui.chat.ChatFragment"
         android:label="ChatFragment"
         tools:layout="@layout/fragment_chat"/>
+
+    <fragment
+        android:id="@+id/nav_bilibili"
+        android:name="com.example.firestar.ui.bilibili.BilibiliFragment"
+        android:label="BiliBiliFragment"
+        tools:layout="@layout/fragment_bilibili"/>
 
 </navigation>

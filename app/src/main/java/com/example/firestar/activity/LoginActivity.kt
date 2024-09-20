@@ -16,10 +16,14 @@ import com.amap.api.location.AMapLocationClient
 import com.example.firestar.data.LoginRequest
 import com.example.firestar.databinding.ActivityLoginBinding
 import com.example.firestar.network.NetWork
+import com.example.firestar.network.RetrofitManager
+import com.example.firestar.network.Service
+import com.example.firestar.network.SharedPreferencesManager
 import com.example.firestar.network.TokenManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LoginActivity:AppCompatActivity() {
 
@@ -30,92 +34,132 @@ class LoginActivity:AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 检查 token 是否有效
+        checkLoginState()
 
-        val sharedPreferences = getSharedPreferences("account_data", Context.MODE_PRIVATE)
-        val isRemember = sharedPreferences.getBoolean("remember_password",false)
 
-        val sharedPreferencesAccount = getSharedPreferences("account",Context.MODE_PRIVATE)
-        val isLogin = sharedPreferencesAccount.getBoolean("is_login",false)
+    }
+    /**
+     * 检查登录状态和 token
+     */
+    private fun checkLoginState() {
+        val token = TokenManager.getCurrentToken()
+        val isLogin = SharedPreferencesManager.getAccountInfoBoolean("is_login", false)
 
-        if (isLogin){
-            //已经登录过，直接跳转到主界面
-            val token = sharedPreferencesAccount.getString("token","")
-            TokenManager.setCurrentToken(token.toString())
-            val intent = Intent(this,MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }else{
-            // 尚未登录，显示登录界面
-            if (isRemember){
-                val account = sharedPreferences.getString("email", "")
-                val password = sharedPreferences.getString("password", "")
-                binding.email.setText(account)
-                binding.password.setText(password)
-                binding.remember.isChecked = true
-            }
-
-            binding.login.setOnClickListener {
-                val email = binding.email.text.toString()
-                val password = binding.password.text.toString()
-                val editor = sharedPreferences.edit()
-                if (binding.remember.isChecked){
-                    editor.putBoolean("remember_password",true)
-                    editor.putString("email",email)
-                    editor.putString("password",password)
-                }
-                else{
-                    editor.clear()
-                }
-                editor.apply()
-                CoroutineScope(Dispatchers.IO).launch {
-                    login()
+        if (isLogin && !token.isNullOrEmpty()) {
+            // 如果已经登录过，验证 token
+            CoroutineScope(Dispatchers.IO).launch {
+                val isValid = validateToken(token)
+                withContext(Dispatchers.Main) {
+                    if (isValid) {
+                        // token 有效，跳转到主界面
+                        navigateToMainActivity()
+                    } else {
+                        // token 无效，清除登录信息并显示登录界面
+                        handleInvalidToken()
+                    }
                 }
             }
-
-            binding.register.setOnClickListener {
-                val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-                startActivity(intent)
-            }
-
+        } else {
+            // 尚未登录或没有 token，显示登录界面
+            showLoginScreen()
         }
     }
 
+    /**
+     * 调用服务器接口验证 token 有效性
+     */
+    private suspend fun validateToken(token: String): Boolean {
+        return try {
+            // 使用一个受保护的 API 来验证 token，比如获取用户信息
+            val response = NetWork.getUsers()
+            response.code == "200"
+        } catch (e: Exception) {
+            false
+        }
+    }
 
+    /**
+     * 跳转到主界面
+     */
+    private fun navigateToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 
+    /**
+     * 处理 token 无效
+     */
+    private fun handleInvalidToken() {
+        TokenManager.clearToken()
+        SharedPreferencesManager.clearAccount()
+        showLoginScreen()
+    }
 
-    private suspend fun login(){
+    /**
+     * 显示登录界面
+     */
+    private fun showLoginScreen() {
+        val isRemember = SharedPreferencesManager.getAccountDataBoolean("remember_password", false)
+
+        if (isRemember) {
+            val account = SharedPreferencesManager.getAccountDataString("email", "")
+            val password = SharedPreferencesManager.getAccountDataString("password", "")
+            binding.email.setText(account)
+            binding.password.setText(password)
+            binding.remember.isChecked = true
+        }
+
+        binding.login.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                login()
+            }
+        }
+
+        binding.register.setOnClickListener {
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    /**
+     * 执行登录操作
+     */
+    private suspend fun login() {
         try {
             val email = binding.email.text.toString()
             val password = binding.password.text.toString()
-            val loginResponse = NetWork.login(LoginRequest(email, password));
-            if (loginResponse.code == "200"){
+            val loginResponse = NetWork.login(LoginRequest(email, password))
+
+            if (loginResponse.code == "200") {
                 val token = loginResponse.data.token
                 TokenManager.setCurrentToken(token)
 
-                val sharedPreferencesAccount = getSharedPreferences("account", Context.MODE_PRIVATE)
-                val editor = sharedPreferencesAccount.edit()
-                editor.putString("token",token)
-                editor.putString("username",loginResponse.data.username)
-                editor.putString("email",loginResponse.data.email)
-                editor.putString("avatar",loginResponse.data.avatar)
-                editor.putBoolean("is_login", true)
-                editor.apply()
+                // 保存账户信息
+                SharedPreferencesManager.saveAccountInfo("token", token)
+                SharedPreferencesManager.saveAccountInfo("username", loginResponse.data.username)
+                SharedPreferencesManager.saveAccountInfo("email", loginResponse.data.email)
+                SharedPreferencesManager.saveAccountInfo("avatar", loginResponse.data.avatar)
+                SharedPreferencesManager.saveAccountInfo("is_login", true)
 
-                Log.d("loginResponse:",loginResponse.toString());
-                Looper.prepare()
-                Toast.makeText(this@LoginActivity,"登录成功",Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-                Looper.loop()
-            }else{
-                Log.d("loginResponse:",loginResponse.toString());
-                Looper.prepare()
-                Toast.makeText(this@LoginActivity,"登录失败",Toast.LENGTH_SHORT).show()
-                Looper.loop()
+                // UI 操作需要在主线程中执行
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@LoginActivity, "登录成功", Toast.LENGTH_SHORT).show()
+                    navigateToMainActivity()
+                }
+
+            } else {
+                // 登录失败，提示用户
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@LoginActivity, "登录失败", Toast.LENGTH_SHORT).show()
+                }
             }
-        }catch (e:Exception){
-            Log.e("TAG","login",e)
+        } catch (e: Exception) {
+            Log.e("TAG", "login error", e)
+            withContext(Dispatchers.Main) {
+                Toast.makeText(this@LoginActivity, "登录异常", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

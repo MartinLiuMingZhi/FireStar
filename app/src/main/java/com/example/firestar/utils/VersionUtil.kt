@@ -3,7 +3,7 @@ package com.example.firestar.utils
 import com.google.firebase.BuildConfig
 
 //获取版本号
-class VersionUtil {
+object VersionUtil {
 
     fun getVersion(): String {
 //        val versionCOde = BuildConfig.VERSION_CODE
