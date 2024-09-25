@@ -66,10 +66,6 @@ data class UserDTO(
     val email: String
 )
 
-data class Page(
-    val page: Long,
-    val pageSize: Long
-)
 
 data class UserPageResponse(
     val records: List<ContactItem>,
@@ -77,4 +73,20 @@ data class UserPageResponse(
     val size: String,
     val current: String,
     val pages: String
+)
+
+data class PostDTO(
+    val id: Long,
+    val userId: Long,
+    val content: String,
+    val createTime: Timestamp,
+    val updateTime: Timestamp
+)
+
+data class CommentDTO(
+    val id: Long,
+    val userId: Long,
+    val postId: Long,
+    val content: String,
+    val createTime: Timestamp,
 )

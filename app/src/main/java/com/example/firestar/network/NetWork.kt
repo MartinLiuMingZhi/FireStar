@@ -33,6 +33,26 @@ object NetWork {
 
     suspend fun userPages(page: Page) = service.userPages(page).await()
 
+    suspend fun createPost(userId:Long,content:String) = service.createPost(userId, content).await()
+
+    suspend fun getAllPosts() = service.getAllPosts().await()
+
+    suspend fun deletePost(id:Long) = service.deletePost(id).await()
+
+    suspend fun likePost(postId:Long,userId:Long) = service.likePost(postId, userId).await()
+
+    suspend fun unlikePost(postId:Long,userId:Long) = service.unlikePost(postId, userId).await()
+
+    suspend fun getLikeCountByPostId(postId:Long) = service.getLikeCountByPostId(postId).await()
+
+    suspend fun getLikeUserNamesByPostId(postId:Long) = service.getLikeUserNamesByPostId(postId).await()
+
+    suspend fun createComment(postId:Long,userId:Long,content:String) = service.createComment(postId, userId, content).await()
+
+    suspend fun getCommentsByPostId(postId:Long) = service.getCommentsByPostId(postId).await()
+    suspend fun deleteComment(id:Long) = service.deleteComment(id).await()
+
+
     //给网络请求方法的返回值增加拓展函数
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine { continuation ->

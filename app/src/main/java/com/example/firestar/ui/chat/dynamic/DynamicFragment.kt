@@ -1,5 +1,6 @@
 package com.example.firestar.ui.chat.dynamic
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firestar.R
+import com.example.firestar.activity.DynamicActivity
 import com.example.firestar.adapter.DynamicAdapter
 import com.example.firestar.model.DynamicItem
 
@@ -53,6 +55,9 @@ class DynamicFragment : Fragment() {
         adapter = DynamicAdapter(dynamicItems){ dynamicItem ->
             when (dynamicItem.id) {
                 1 -> {
+                    // 在点击事件中启动 DynamicActivity
+                    val intent = Intent(requireContext(), DynamicActivity::class.java)
+                    startActivity(intent)
 
                 }
                 2 -> {
