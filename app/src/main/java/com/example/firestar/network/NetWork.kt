@@ -21,6 +21,16 @@ object NetWork {
 
     suspend fun register(registerRequest: RegisterRequest) = service.register(registerRequest).await()
 
+    suspend fun logout() = service.logout().await()
+
+    suspend fun getUsers() = service.getUsers().await()
+
+    suspend fun getUserById(userId:Long) = service.getUserById(userId).await()
+
+    suspend fun getUserPage(page: Page) = service.getUserPage(page).await()
+
+    suspend fun getUserByEmail(email:String) = service.getUserByEmail(email).await()
+
     suspend fun sendCode(email: String) = service.sendCode(email).await()
 
     suspend fun verifyCode(verifyCodeRequest: VerifyCodeRequest) = service.verifyCode(verifyCodeRequest).await()
@@ -28,10 +38,6 @@ object NetWork {
     suspend fun sendMessage(sendMessageRequest: SendMessageRequest)  = service.sendMessage(sendMessageRequest).await()
 
     suspend fun getMessage(senderId:Long,receiverId:Long) = service.getMessage(senderId, receiverId).await()
-
-    suspend fun getUsers() = service.getUsers().await()
-
-    suspend fun userPages(page: Page) = service.userPages(page).await()
 
     suspend fun createPost(userId:Long,content:String) = service.createPost(userId, content).await()
 

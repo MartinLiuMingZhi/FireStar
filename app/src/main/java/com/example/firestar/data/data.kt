@@ -1,8 +1,8 @@
 package com.example.firestar.data
 
-import androidx.annotation.Size
+
 import com.example.firestar.model.ContactItem
-import java.sql.Timestamp
+import java.util.Date
 
 data class BaseResponse<T>(
     val code: String,
@@ -55,7 +55,7 @@ data class GetMessageResponse(
     val senderId: Long,
     val receiverId: Long,
     val content: String,
-    val timestamp: Timestamp
+    val timestamp: String
 )
 
 data class UserDTO(
@@ -79,8 +79,8 @@ data class PostDTO(
     val id: Long,
     val userId: Long,
     val content: String,
-    val createTime: Timestamp,
-    val updateTime: Timestamp
+    val createTime: String,
+    val updateTime: String
 )
 
 data class CommentDTO(
@@ -88,5 +88,5 @@ data class CommentDTO(
     val userId: Long,
     val postId: Long,
     val content: String,
-    val createTime: Timestamp,
+    val createTime: String,
 )

@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.firestar.data.UserDTO
 import com.example.firestar.model.ContactItem
 import com.example.firestar.network.NetWork
 import kotlinx.coroutines.Dispatchers

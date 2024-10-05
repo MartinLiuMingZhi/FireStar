@@ -30,11 +30,20 @@ interface Service {
     @POST("/user/register")
     fun register(@Body registerRequest: RegisterRequest):Call<BaseResponse<RegisterResponse>>
 
+    @GET("/user/logout")
+    fun logout():Call<BaseResponse<String>>
+
     @GET("/user/getUsers")
     fun getUsers():Call<BaseResponse<List<ContactItem>>>
 
     @GET("/user/page")
-    fun userPages(@Body page: Page):Call<BaseResponse<UserPageResponse>>
+    fun getUserPage(@Body page: Page):Call<BaseResponse<UserPageResponse>>
+
+    @GET("/user/{id}")
+    fun getUserById(@Query("userId") userId:Long):Call<BaseResponse<ContactItem>>
+
+    @GET("/user/getUserByEmail")
+    fun getUserByEmail(@Query("email") email:String):Call<BaseResponse<ContactItem>>
 
     @GET("/mail/sendCode")
     fun sendCode(@Query("email") email:String):Call<BaseResponse<String>>
