@@ -48,7 +48,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="36dp"
                     android:text="用户名"
-                    android:textColor="#BB9B9B"
+                    android:textColor="#979AAC"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
