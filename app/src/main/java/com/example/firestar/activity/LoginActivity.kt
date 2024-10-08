@@ -143,6 +143,15 @@ class LoginActivity:AppCompatActivity() {
                 SharedPreferencesManager.saveAccountInfo("avatar", loginResponse.data.avatar)
                 SharedPreferencesManager.saveAccountInfo("is_login", true)
 
+                if (binding.remember.isChecked) {
+                    SharedPreferencesManager.saveAccountData("email", email)
+                    SharedPreferencesManager.saveAccountData("password", password)
+                    SharedPreferencesManager.saveAccountData("remember_password", true)
+                } else {
+                    SharedPreferencesManager.clearAccountData()
+                    SharedPreferencesManager.saveAccountData("remember_password", false)
+                }
+
                 // UI 操作需要在主线程中执行
                 withContext(Dispatchers.Main) {
                     Toast.makeText(this@LoginActivity, "登录成功", Toast.LENGTH_SHORT).show()

@@ -31,7 +31,7 @@ class DynamicActivity : AppCompatActivity() {
 
        setupUI()
 
-//        // 观察帖子数据变化
+        // 观察帖子数据变化
 //        viewModel.posts.observe(this, Observer { posts ->
 //            setupRecyclerView(posts)
 //        })
