@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/item_post"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:clickable="true"
+    android:focusable="true">
 
-    <ImageView
-        android:id="@+id/item_dynamic_image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_dynamic"
-        android:layout_alignParentStart="true"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
-    <TextView
-        android:id="@+id/item_dynamic_text"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="社区动态"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:layout_toEndOf="@id/item_dynamic_image"
-        android:layout_marginStart="20dp"
-        android:gravity="center"/>
+        <ImageView
+            android:id="@+id/item_dynamic_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_dynamic"
+            android:layout_alignParentStart="true"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_toright"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"/>
-</RelativeLayout>
+        <TextView
+            android:id="@+id/item_dynamic_text"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="社区动态"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@id/item_dynamic_image"
+            android:layout_marginStart="20dp"
+            android:gravity="center"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_toright"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

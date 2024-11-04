@@ -79,7 +79,7 @@ data class PostDTO(
     val id: Long,
     val userId: Long,
     val content: String,
-    val createTime: String,
+    val createdTime: String,
     val updateTime: String
 )
 

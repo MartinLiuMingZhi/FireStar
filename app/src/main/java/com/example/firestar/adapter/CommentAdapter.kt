@@ -17,7 +17,7 @@ class CommentAdapter(private val comments: List<CommentItem>) : RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val comment = comments[position]
-        holder.binding.tvUsername.text = comment.username
+        holder.binding.tvUsername.text = String.format("%s:", comment.username)
         holder.binding.tvComment.text = comment.content
     }
 

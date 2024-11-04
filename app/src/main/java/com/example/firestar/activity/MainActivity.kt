@@ -37,6 +37,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -62,6 +63,9 @@ class MainActivity : AppCompatActivity(), AMapLocationListener {
     var mLocationOption: AMapLocationClientOption? = null
 
 
+    // 定义更新时间间隔，单位为毫秒
+    private val WEATHER_UPDATE_INTERVAL = 300000L  // 5分钟
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -84,7 +88,7 @@ class MainActivity : AppCompatActivity(), AMapLocationListener {
 
         //初始化定位
         initLocation()
-
+        startWeatherUpdates() // 启动定时天气更新任务
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
@@ -258,6 +262,17 @@ class MainActivity : AppCompatActivity(), AMapLocationListener {
             } else {
                 // 定位失败，显示错误信息
                 Log.e(TAG, "定位失败，错误码: ${aMapLocation.errorCode}, 错误信息: ${aMapLocation.errorInfo}")
+            }
+        }
+    }
+
+    private fun startWeatherUpdates() {
+        CoroutineScope(Dispatchers.IO).launch {
+            while (true) {
+                if (::location.isInitialized) {
+                    refreshWeather()
+                }
+                delay(WEATHER_UPDATE_INTERVAL)
             }
         }
     }

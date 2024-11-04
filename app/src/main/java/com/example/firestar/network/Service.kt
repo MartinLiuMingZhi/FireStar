@@ -40,7 +40,7 @@ interface Service {
     fun getUserPage(@Body page: Page):Call<BaseResponse<UserPageResponse>>
 
     @GET("/user/{id}")
-    fun getUserById(@Query("userId") userId:Long):Call<BaseResponse<ContactItem>>
+    fun getUserById(@Path("id") userId:Long):Call<BaseResponse<ContactItem>>
 
     @GET("/user/getUserByEmail")
     fun getUserByEmail(@Query("email") email:String):Call<BaseResponse<ContactItem>>

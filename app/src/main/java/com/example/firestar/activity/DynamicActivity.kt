@@ -1,6 +1,7 @@
 package com.example.firestar.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -13,14 +14,15 @@ import com.example.firestar.adapter.PostAdapter
 import com.example.firestar.databinding.ActivityDynamicBinding
 import com.example.firestar.model.PostItem
 import com.example.firestar.network.SharedPreferencesManager
-//import com.example.firestar.viewmodel.DynamicViewModel
+import com.example.firestar.viewmodel.DynamicViewModel
+
 
 
 class DynamicActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDynamicBinding
 
-//    private val viewModel: DynamicViewModel by viewModels()
+    private val viewModel: DynamicViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,23 +34,24 @@ class DynamicActivity : AppCompatActivity() {
        setupUI()
 
         // 观察帖子数据变化
-//        viewModel.posts.observe(this, Observer { posts ->
-//            setupRecyclerView(posts)
-//        })
-//
-//        // 加载帖子
-//        viewModel.loadPosts()
+        viewModel.posts.observe(this, Observer { posts ->
+            setupRecyclerView(posts)
+        })
+
+        // 加载帖子
+        viewModel.loadPosts()
 
     }
 
     // 设置用户界面
     private fun setupUI() {
-        binding.userName.text = SharedPreferencesManager.getAccountDataString("userName", "")
-        val userAvatarUrl = SharedPreferencesManager.getAccountDataString("userAvatar", "")
+        binding.userName.text = SharedPreferencesManager.getAccountInfoString("username", "")
+        val userAvatarUrl = SharedPreferencesManager.getAccountInfoString("avatar", "")
         Glide.with(this)
             .load(userAvatarUrl)
             .apply(RequestOptions().transform(RoundedCorners(48)))
             .into(binding.userAvatar)
+        Log.d("setupUI", "userAvatarUrl: $userAvatarUrl")
     }
 
 
