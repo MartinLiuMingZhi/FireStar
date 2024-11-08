@@ -1,8 +1,11 @@
 package com.example.firestar.activity
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -24,9 +27,17 @@ class DynamicActivity : AppCompatActivity() {
 
     private val viewModel: DynamicViewModel by viewModels()
 
+    // 定义 ActivityResultLauncher
+    private val newPostLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            // 刷新帖子数据
+            viewModel.loadPosts()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+//        enableEdgeToEdge()
         binding = ActivityDynamicBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -41,7 +52,17 @@ class DynamicActivity : AppCompatActivity() {
         // 加载帖子
         viewModel.loadPosts()
 
+        binding.dynamicBack.setOnClickListener {
+            finish()
+        }
+
+        binding.postPublish.setOnClickListener {
+            val intent = Intent(this, NewPostActivity::class.java)
+            newPostLauncher.launch(intent)
+        }
+
     }
+
 
     // 设置用户界面
     private fun setupUI() {

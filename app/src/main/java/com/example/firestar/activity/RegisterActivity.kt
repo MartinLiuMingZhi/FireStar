@@ -118,6 +118,7 @@ class RegisterActivity : AppCompatActivity() {
 
             val sharedPreferences = getSharedPreferences("account", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
+            editor.putLong("userId",response.data.userid)
             editor.putString("token",token)
             editor.putString("username",response.data.username)
             editor.putString("email",response.data.email)

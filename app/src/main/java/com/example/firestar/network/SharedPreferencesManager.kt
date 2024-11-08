@@ -46,6 +46,11 @@ object SharedPreferencesManager {
         prefs.edit().putBoolean(key, value).apply()
     }
 
+    fun saveAccountInfo(key: String, value: Long) {
+        val prefs = getSharedPreferences(PREF_ACCOUNT)
+        prefs.edit().putLong(key, value).apply()
+    }
+
     // 从 account 获取值
     fun getAccountInfoString(key: String, defaultValue: String): String? {
         val prefs = getSharedPreferences(PREF_ACCOUNT)
@@ -55,6 +60,11 @@ object SharedPreferencesManager {
     fun getAccountInfoBoolean(key: String, defaultValue: Boolean): Boolean {
         val prefs = getSharedPreferences(PREF_ACCOUNT)
         return prefs.getBoolean(key, defaultValue)
+    }
+
+    fun getAccountInfoLong(key: String, defaultValue: Long): Long {
+        val prefs = getSharedPreferences(PREF_ACCOUNT)
+        return prefs.getLong(key, defaultValue)
     }
 
     // 清除数据

@@ -142,6 +142,7 @@ class LoginActivity:AppCompatActivity() {
                 SharedPreferencesManager.saveAccountInfo("email", loginResponse.data.email)
                 SharedPreferencesManager.saveAccountInfo("avatar", loginResponse.data.avatar)
                 SharedPreferencesManager.saveAccountInfo("is_login", true)
+                SharedPreferencesManager.saveAccountInfo("userId",loginResponse.data.userid)
 
                 if (binding.remember.isChecked) {
                     SharedPreferencesManager.saveAccountData("email", email)
