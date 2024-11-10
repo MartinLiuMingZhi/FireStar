@@ -124,6 +124,7 @@ class RegisterActivity : AppCompatActivity() {
             editor.putString("email",response.data.email)
             editor.putString("avatar",response.data.avatar)
             editor.putBoolean("is_login", true)
+            editor.putLong("status",response.data.status)
             editor.apply()
 
             Looper.prepare()

@@ -20,7 +20,8 @@ data class LoginResponse(
     val email: String,
     val avatar:String,
     val sex:String,
-    val token:String
+    val token:String,
+    val status:Long
 )
 
 data class RegisterRequest(
@@ -36,7 +37,8 @@ data class RegisterResponse(
     val email: String,
     val avatar: String,
     val sex: String,
-    val token: String
+    val token: String,
+    val status:Long
 )
 
 data class VerifyCodeRequest(

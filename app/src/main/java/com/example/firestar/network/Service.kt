@@ -18,6 +18,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -30,7 +31,7 @@ interface Service {
     @POST("/user/register")
     fun register(@Body registerRequest: RegisterRequest):Call<BaseResponse<RegisterResponse>>
 
-    @GET("/user/logout")
+    @POST("/user/logout")
     fun logout():Call<BaseResponse<String>>
 
     @GET("/user/getUsers")

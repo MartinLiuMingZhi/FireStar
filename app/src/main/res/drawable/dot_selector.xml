@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape>
+            <solid android:color="#13C713" /> <!-- 绿色 -->
+            <corners android:radius="5dp" /> <!-- 圆角半径，设置为5dp以形成圆形 -->
+        </shape>
+    </item>
+    <item android:state_selected="false">
+        <shape>
+            <solid android:color="#808080" /> <!-- 灰色 -->
+            <corners android:radius="5dp" /> <!-- 圆角半径，设置为5dp以形成圆形 -->
+        </shape>
+    </item>
+</selector>

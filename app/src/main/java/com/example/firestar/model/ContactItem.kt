@@ -6,5 +6,6 @@ data class ContactItem(
     val username: String,
     val email: String,
     val sex: String,
-    val userid: String
+    val userid: String,
+    val status:Long
 )

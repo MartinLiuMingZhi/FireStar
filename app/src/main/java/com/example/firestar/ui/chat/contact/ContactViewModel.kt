@@ -28,7 +28,7 @@ class ContactViewModel : ViewModel() {
     }
 
     // 使用 Coroutine 异步加载数据
-    private fun loadItems() {
+    fun loadItems() {
         viewModelScope.launch {
             try {
                 // 切换到 IO 线程进行网络请求

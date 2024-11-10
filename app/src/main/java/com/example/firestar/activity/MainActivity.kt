@@ -15,6 +15,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -31,6 +32,7 @@ import com.example.firestar.R
 import com.example.firestar.databinding.ActivityMainBinding
 import com.example.firestar.model.getSky
 import com.example.firestar.network.KeyManager
+import com.example.firestar.network.NetWork
 import com.example.firestar.network.WeatherNetWork
 import com.example.firestar.viewmodel.LocationViewModel
 import com.google.android.material.navigation.NavigationView
@@ -138,13 +140,20 @@ class MainActivity : AppCompatActivity(), AMapLocationListener {
 
         val settingBtn = binding.btnSettings
         settingBtn.setOnClickListener {
-            val edit = sharedPreferencesAccount.edit()
-            edit.clear()
-            edit.apply()
-            finishAffinity()
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+            lifecycleScope.launch(Dispatchers.IO) {
+            val response = NetWork.logout()
+            if (response.code == "200") {
+                val edit = sharedPreferencesAccount.edit()
+                edit.clear()
+                edit.apply()
+                withContext(Dispatchers.Main) {
+                    finishAffinity()
+                    val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                 }
+              }
+            }
         }
 
         binding.icWeather.setOnClickListener {

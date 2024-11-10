@@ -1,5 +1,6 @@
 package com.example.firestar.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,14 @@ class ContactAdapter(private val items: List<ContactItem>):RecyclerView.Adapter<
             )).into(holder.binding.roundAvatar)
         holder.binding.email.text = user.email
         holder.binding.username.text = user.username
+        Log.d("ContactAdapter", "onBindViewHolder:${user.username} ${user.status}")
+        if (user.status == 1L){
+            holder.binding.statusText.text = "在线"
+            holder.binding.dot.isSelected = true
+        }else{
+            holder.binding.statusText.text = "离线"
+            holder.binding.dot.isSelected = false
+        }
     }
 
 

@@ -1,44 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_margin="10dp">
+    android:clickable="true"
+    android:focusable="true">
 
-    <ImageView
-        android:id="@+id/round_avatar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_launcher_round"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="5dp"
-        android:padding="5dp">
+        android:layout_margin="10dp">
 
-        <TextView
-            android:id="@+id/username"
+        <ImageView
+            android:id="@+id/round_avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_launcher_round"
+            android:layout_alignParentStart="true" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="username"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:orientation="vertical"
+            android:layout_toEndOf="@id/round_avatar"
+            android:layout_marginStart="5dp"
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/email"
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="username"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3108531642@qq.com"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="3108531642@qq.com"
-            android:textSize="12sp"/>
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true">
 
+            <View
+                android:id="@+id/dot"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/dot_selector"/>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/status_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="离线"
+                android:textSize="10sp"
+                android:layout_marginStart="5dp"/>
 
+        </LinearLayout>
 
-</LinearLayout>
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

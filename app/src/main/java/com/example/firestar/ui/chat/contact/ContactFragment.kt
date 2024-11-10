@@ -31,6 +31,9 @@ class ContactFragment : Fragment() {
     ): View {
         val view =  inflater.inflate(R.layout.fragment_contact, container, false)
 
+        //获取SwipeRefreshLayout
+        val swipeRefreshLayout = view.findViewById<androidx.swiperefreshlayout.widget.SwipeRefreshLayout>(R.id.swipe_refresh_layout)
+
         // 获取 RecyclerView 并设置布局管理器
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView_contact)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -43,8 +46,13 @@ class ContactFragment : Fragment() {
         viewModel.items.observe(viewLifecycleOwner) { items ->
             // 当数据变化时，更新 RecyclerView 的适配器
             recyclerView.adapter = ContactAdapter(items)
+            swipeRefreshLayout.isRefreshing = false
         }
 
+        swipeRefreshLayout.setOnRefreshListener {
+            // 在这里调用 ViewModel 的加载数据的方法
+            viewModel.loadItems()
+        }
         return view
     }
 }
