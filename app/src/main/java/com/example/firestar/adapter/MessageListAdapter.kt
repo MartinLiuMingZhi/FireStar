@@ -1,18 +1,19 @@
 package com.example.firestar.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firestar.R
-import com.example.firestar.data.Messages
+import com.example.firestar.data.MessageEntity
 
-class MessageListAdapter(private val messageList: List<Messages>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+//显示消息的适配器
+class MessageListAdapter(private val messageList: List<MessageEntity>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val VIEW_TYPE_MESSAGE_SENT = 1
     private val VIEW_TYPE_MESSAGE_RECEIVED = 2
+
     inner class SendViewHolder(view: View): RecyclerView.ViewHolder(view){
         val sendMessage: TextView = view.findViewById(R.id.text_gchat_message_me)
     }
@@ -42,8 +43,8 @@ class MessageListAdapter(private val messageList: List<Messages>) : RecyclerView
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val msg = messageList[position]
         when(holder){
-            is SendViewHolder -> { holder.sendMessage.text = msg.context}
-            is ReceiveViewHolder -> {holder.receiveMessage.text = msg.context}
+            is SendViewHolder -> { holder.sendMessage.text = msg.content}
+            is ReceiveViewHolder -> {holder.receiveMessage.text = msg.content}
         }
     }
 }

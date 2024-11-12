@@ -9,6 +9,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.firestar.databinding.ItemMessageBinding
 import com.example.firestar.model.MessageItem
 
+//单个消息列表item显示(不同联系人)
 class MessageAdapter(private val items: List<MessageItem>): RecyclerView.Adapter<MessageAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemMessageBinding): RecyclerView.ViewHolder(binding.root)

@@ -5,22 +5,22 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "messages")
-class Messages(
+class MessageEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id:Long = 1,
 
-    @ColumnInfo(name = "sender_id")
+    @ColumnInfo(name = "senderId")
     val senderId:Long,
 
-    @ColumnInfo(name = "receiver_id")
+    @ColumnInfo(name = "receiverId")
     val receiverId:Long,
 
     @ColumnInfo(name = "context")
-    val context: String,
+    val content: String,
 
-//    @ColumnInfo(name = "timestamp")
-//    val timestamp:
+    @ColumnInfo(name = "timestamp")
+    val timestamp: Long,
 
     val type: Int
 )

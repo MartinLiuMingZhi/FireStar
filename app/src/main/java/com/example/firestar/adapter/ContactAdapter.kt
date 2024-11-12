@@ -39,6 +39,10 @@ class ContactAdapter(private val items: List<ContactItem>):RecyclerView.Adapter<
             holder.binding.statusText.text = "离线"
             holder.binding.dot.isSelected = false
         }
+
+        holder.binding.itemPerson.setOnClickListener {
+
+        }
     }
 
 
